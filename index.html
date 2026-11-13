@@ -88,10 +88,12 @@ document.addEventListener('keydown',e=>{if(!slideshow.classList.contains('active
 </script><script>
 // Countdown uses the recipient's midnight in India (UTC+05:30).
 const birthdayTime=Date.parse('2026-11-14T00:00:00+05:30');
+// Preview only when explicitly requested in the URL; regular visitors still see the countdown.
+const previewMode=new URLSearchParams(window.location.search).get('preview')==='true';
 const gate=document.getElementById('birthdayGate');document.body.classList.add('gate-locked');
 for(let i=0;i<20;i++){const p=document.createElement('span');p.className='petal';p.textContent=['🌸','✿','❀','🌷'][i%4];p.style.setProperty('--left',`${(i*41.7)%100}%`);p.style.setProperty('--speed',`${12+i%9}s`);p.style.setProperty('--delay',`${-i*1.3}s`);gate.append(p)}
 const enter=document.getElementById('enterBirthday');let ready=false;
-function tickBirthday(){const left=Math.max(0,birthdayTime-Date.now());const d=Math.floor(left/86400000),h=Math.floor(left/3600000)%24,m=Math.floor(left/60000)%60,sec=Math.floor(left/1000)%60;for(const [id,v] of [['days',d],['hours',h],['minutes',m],['seconds',sec]])document.getElementById(id).textContent=String(v).padStart(2,'0');if(left===0&&!ready){ready=true;document.getElementById('gateNumbers').hidden=true;document.getElementById('gateTitle').textContent='Happy Birthday, Anoushka! ♡';document.getElementById('gateSubtitle').textContent='Today is all about celebrating you. ✨';enter.hidden=false}}
+function tickBirthday(){const left=Math.max(0,birthdayTime-Date.now());const d=Math.floor(left/86400000),h=Math.floor(left/3600000)%24,m=Math.floor(left/60000)%60,sec=Math.floor(left/1000)%60;for(const [id,v] of [['days',d],['hours',h],['minutes',m],['seconds',sec]])document.getElementById(id).textContent=String(v).padStart(2,'0');if((left===0||previewMode)&&!ready){ready=true;document.getElementById('gateNumbers').hidden=true;document.getElementById('gateTitle').textContent='Happy Birthday, Anoushka! ♡';document.getElementById('gateSubtitle').textContent='Today is all about celebrating you. ✨';enter.hidden=false;if(previewMode&&Date.now()<birthdayTime){document.getElementById('gateSubtitle').textContent='Preview mode — test the birthday surprise before midnight ✨';}}}
 tickBirthday();setInterval(tickBirthday,1000);
 enter.addEventListener('click',()=>{gate.classList.add('gone');document.body.classList.remove('gate-locked');window.scrollTo({top:0,behavior:'instant'});startContinuousFireworks()});
 // Gentle, continuous fireworks begin only after the surprise button is clicked.
