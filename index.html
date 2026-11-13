@@ -1,141 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#160d22">
-<title>For Anoushka ✨</title>
-<style>
-  :root{--pink:#ffb7d5;--gold:#ffe2a8;--cream:#fff5f7}
-  *{box-sizing:border-box}
-  html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;background:#100a19;color:var(--cream)}
-  body{overflow-x:hidden}
-  .sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;background:
-    radial-gradient(ellipse at 50% 100%,#43213f 0%,#21132e 42%,#100a19 100%)}
-  .sky:before,.sky:after{content:"";position:absolute;inset:-50%;background-image:
-    radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),
-    radial-gradient(1px 1px at 70% 20%,#ffe6b7 45%,transparent 55%),
-    radial-gradient(1.5px 1.5px at 45% 65%,#fff 45%,transparent 55%),
-    radial-gradient(1px 1px at 85% 75%,#ffd3e6 45%,transparent 55%);
-    background-size:280px 240px;animation:drift 45s linear infinite;opacity:.8}
-  .sky:after{background-size:390px 330px;animation-duration:70s;opacity:.45;transform:rotate(18deg)}
-  @keyframes drift{to{transform:translate3d(80px,45px,0)}}
-  main{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:28px 16px;text-align:center}
-  .card{width:min(680px,100%);padding:clamp(26px,6vw,54px) 22px;border:1px solid #ffffff24;border-radius:28px;background:linear-gradient(145deg,#ffffff0d,#ffffff05);box-shadow:0 25px 90px #0006;backdrop-filter:blur(8px)}
-  .eyebrow{letter-spacing:.28em;text-transform:uppercase;font:11px Arial,sans-serif;color:#f5c6db}
-  h1{font-size:clamp(2.6rem,9vw,5.8rem);font-weight:400;line-height:1.02;margin:18px 0;color:#ffe5ee;text-shadow:0 0 28px #ff9fc966}
-  .subtitle{font-size:clamp(1rem,3vw,1.25rem);line-height:1.7;color:#f5dce8;max-width:490px;margin:0 auto 26px}
-  button{border:1px solid #f8c9dc;background:linear-gradient(135deg,#f8c4d9,#e9a7c5);color:#321b2b;border-radius:999px;padding:14px 27px;font: bold 12px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 30px #e88eb844;transition:.2s}
-  button:hover{transform:translateY(-2px);box-shadow:0 12px 36px #e88eb866}
-  .flowers{font-size:clamp(2rem,7vw,3.6rem);letter-spacing:.15em;margin:20px 0;filter:drop-shadow(0 0 15px #ff9fc955);animation:bob 4s ease-in-out infinite}
-  @keyframes bob{50%{transform:translateY(-8px)}}
-  .countdown{display:flex;justify-content:center;gap:clamp(8px,3vw,22px);margin:28px 0}
-  .unit{min-width:65px;padding:13px 10px;border:1px solid #ffffff25;border-radius:15px;background:#ffffff0b}
-  .number{display:block;font:clamp(1.8rem,6vw,3rem) Arial,sans-serif;color:var(--gold);font-variant-numeric:tabular-nums}
-  .unit small{font:9px Arial,sans-serif;letter-spacing:.17em;color:#e9c9d8}
-  .hidden{display:none!important}
-  .letter{margin:28px auto 0;max-width:500px;padding:24px;border-radius:18px;background:#fff7f0;color:#57384b;text-align:left;box-shadow:0 12px 40px #0004}
-  .letter h2{text-align:center;font-weight:400;color:#a34d78;font-size:2rem;margin:0 0 15px}
-  .letter p{font-size:1.08rem;line-height:1.8;margin:0 0 13px}
-  .sign{text-align:right;font-style:italic;color:#a34d78}
-  #fireworks{position:fixed;inset:0;z-index:4;pointer-events:none}
-  .footer{margin-top:25px;font:10px Arial,sans-serif;letter-spacing:.15em;color:#d9b9ca99}
-  .petal{position:fixed;top:-30px;z-index:2;pointer-events:none;animation:fall linear forwards;opacity:.8}
-  @keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
-  @media(max-width:380px){.unit{min-width:56px}.card{padding-inline:14px}}
-</style>
-</head>
-<body>
-<div class="sky"></div>
-<canvas id="fireworks"></canvas>
-<main>
-  <section class="card">
-    <div class="eyebrow" id="eyebrow">A little birthday surprise just for YOU</div>
-    <div class="flowers" aria-hidden="true">🌷 ✨ 🌸</div>
-    <div id="waiting">
-      <h1>For Anoushka</h1>
-      <p class="subtitle">Some surprises are worth waiting for.<br>And this little one is made just for you.</p>
-      <button id="openBtn">Open your surprise</button>
-      <div class="countdown" aria-label="Countdown">
-        <div class="unit"><span class="number" id="days">00</span><small>DAYS</small></div>
-        <div class="unit"><span class="number" id="hours">00</span><small>HOURS</small></div>
-        <div class="unit"><span class="number" id="minutes">00</span><small>MINUTES</small></div>
-        <div class="unit"><span class="number" id="seconds">00</span><small>SECONDS</small></div>
-      </div>
-      <p class="subtitle" style="font-size:.95rem;margin-bottom:0">Until your special day begins…</p>
-    </div>
-    <div id="birthday" class="hidden">
-      <div class="eyebrow">Today, the universe celebrates you</div>
-      <h1>Happy Birthday,<br>Anoushka!</h1>
-      <p class="subtitle">May your day be as lovely, warm and full of light as the happiness you bring into the world.</p>
-      <button id="letterBtn">A little note for you</button>
-      <article id="letter" class="letter hidden">
-        <h2>Dear Anoushka,</h2>
-        <p>Some people make ordinary days feel a little more special just by being themselves. I hope today reminds you how appreciated, cherished and deserving of happiness you are.</p>
-        <p>May this new year of your life bring you gentle mornings, unexpected reasons to smile, beautiful memories and everything your heart has been quietly wishing for.</p>
-        <p>Keep being wonderfully you. The world is brighter with you in it.</p>
-        <p class="sign">With warmest wishes ♡</p>
-      </article>
-    </div>
-    <div class="footer">MADE WITH A LITTLE MAGIC & A LOT OF HEART</div>
-  </section>
-</main>
-<script>
-  // Countdown ends at midnight at the start of 14 November 2026 (India Standard Time).
-  const target = new Date("2026-11-14T00:00:00+05:30").getTime();
-  const $ = id => document.getElementById(id);
-  let revealed = false;
-  function updateCountdown(){
-    const left = target - Date.now();
-    if(left <= 0){ revealBirthday(); return; }
-    $("days").textContent = String(Math.floor(left/86400000)).padStart(2,"0");
-    $("hours").textContent = String(Math.floor(left%86400000/3600000)).padStart(2,"0");
-    $("minutes").textContent = String(Math.floor(left%3600000/60000)).padStart(2,"0");
-    $("seconds").textContent = String(Math.floor(left%60000/1000)).padStart(2,"0");
-  }
-  function petals(){
-    const symbols=["🌸","🌷","✿","❀"];
-    for(let i=0;i<24;i++){
-      const p=document.createElement("span");p.className="petal";
-      p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-      p.style.left=Math.random()*100+"vw";p.style.animationDuration=(6+Math.random()*7)+"s";
-      p.style.animationDelay=(Math.random()*5)+"s";p.style.fontSize=(13+Math.random()*18)+"px";
-      document.body.appendChild(p);setTimeout(()=>p.remove(),14000);
-    }
-  }
-  $("openBtn").addEventListener("click",()=>{ $("openBtn").textContent="The surprise is getting closer…"; petals(); });
-  $("letterBtn").addEventListener("click",()=>{ $("letter").classList.toggle("hidden"); $("letterBtn").textContent=$("letter").classList.contains("hidden")?"A little note for you":"Close the note"; });
-  function revealBirthday(){
-    if(revealed)return;revealed=true;
-    $("waiting").classList.add("hidden");$("birthday").classList.remove("hidden");
-    $("eyebrow").textContent="A little birthday surprise just for YOU";
-    petals();startFireworks();
-  }
-  // Canvas fireworks: lightweight, self-contained, and free to run.
-  const canvas=$("fireworks"),ctx=canvas.getContext("2d");let sparks=[],raf;
-  function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
-  addEventListener("resize",resize);resize();
-  function burst(x,y){
-    const hue=Math.random()*360;
-    for(let i=0;i<75;i++){const a=Math.PI*2*i/75+(Math.random()-.5)*.12,s=1.2+Math.random()*4;
-      sparks.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:55+Math.random()*25,max:80,hue});}
-  }
-  function frame(){
-    ctx.fillStyle="rgba(16,10,25,.18)";ctx.fillRect(0,0,innerWidth,innerHeight);
-    sparks=sparks.filter(p=>p.life>0);
-    for(const p of sparks){p.x+=p.vx;p.y+=p.vy;p.vy+=.025;p.vx*=.99;p.life--;
-      ctx.beginPath();ctx.arc(p.x,p.y,2.1,0,Math.PI*2);
-      ctx.fillStyle=`hsla(${p.hue},100%,75%,${p.life/p.max})`;ctx.fill();}
-    if(!revealed){ctx.clearRect(0,0,innerWidth,innerHeight);return}
-    raf=requestAnimationFrame(frame);
-  }
-  function startFireworks(){
-    let count=0;const launch=setInterval(()=>{burst(innerWidth*(.15+Math.random()*.7),innerHeight*(.12+Math.random()*.42));count++;if(count>14)clearInterval(launch)},430);
-    frame();
-  }
-  updateCountdown();setInterval(updateCountdown,1000);
-  // If the link is opened after midnight, show the birthday reveal immediately.
-  if(Date.now()>=target)revealBirthday();
-</script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>For Anoushka ♡</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 12%,#79537d77,transparent 45%),radial-gradient(ellipse at 85% 40%,#aa6b9566,transparent 52%),linear-gradient(155deg,#33223f 0%,#513452 42%,#271a37 100%);color:#fff5fb;font-family:Georgia,serif;overflow-x:hidden}header{text-align:center;padding:85px 20px 55px}header small{font:11px Arial,sans-serif;letter-spacing:4px;color:#dfadcb}h1{font-size:clamp(50px,9vw,108px);font-weight:normal;margin:18px 0 8px}p{line-height:1.8;color:#d9c2d2}.intro{font-style:italic}.gallery{display:grid;gap:19px;overflow:hidden;padding:22px 0 55px}.strip{overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent)}.track{display:flex;gap:16px;width:max-content;animation:slide var(--duration,65s) linear infinite;will-change:transform}.strip.reverse .track{animation-name:slideReverse}.photo{width:clamp(150px,20vw,290px);height:clamp(200px,27vw,380px);flex:none;border-radius:14px;overflow:hidden;background:#30243a;box-shadow:0 7px 30px #0005}.photo img{display:block;width:100%;height:100%;object-fit:contain}.strip:hover .track{animation-play-state:paused}@keyframes slide{to{transform:translateX(-50%)}}@keyframes slideReverse{from{transform:translateX(-50%)}to{transform:translateX(0)}}.between{text-align:center;padding:18px 20px 25px;font-style:italic;font-size:clamp(18px,3vw,28px);color:#e6c1d9}.ending{text-align:center;padding:100px 24px 120px}.ending button{border:1px solid #d8a7c5;background:#e6b9d2;color:#211124;border-radius:99px;padding:17px 30px;font-size:15px;cursor:pointer}.letter{max-width:650px;margin:30px auto 0;display:none;font-size:clamp(20px,3vw,30px);line-height:1.7}.letter.visible{display:block;animation:appear 1.5s ease}@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}footer{text-align:center;color:#8c788e;padding:20px;font:12px Arial,sans-serif}@media(prefers-reduced-motion:reduce){.track{animation:none!important}.strip{overflow-x:auto;mask-image:none}}
+
+/* Soft atmospheric glow, fairy lights and twinkles live BEHIND all photos. */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 15% 28%,#ffcfdd30,transparent 25%),radial-gradient(circle at 80% 65%,#ffe4a526,transparent 30%);animation:glow 10s ease-in-out infinite alternate}
+@keyframes glow{from{opacity:.6}to{opacity:1}}
+body>header,body>main,body>footer{position:relative;z-index:2}
+.fairy-lights{position:absolute;left:0;right:0;top:0;height:125px;pointer-events:none;z-index:4;overflow:hidden}
+.fairy-wire{position:absolute;top:-53px;left:-5%;width:110%;height:110px;border-bottom:1px solid #f7d7a05c;border-radius:0 0 50% 50%}
+.bulb{position:absolute;top:var(--top);left:var(--left);height:var(--size);width:var(--size);border-radius:50%;background:#ffe6ac;box-shadow:0 0 9px 3px #ffe2a7b0,0 0 26px 9px #ffc76c52;animation:twinkle var(--speed) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.38;transform:scale(.8)}to{opacity:1;transform:scale(1.12)}}
+.sparkle-field{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.sparkle{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#fff4d4;box-shadow:0 0 9px 2px #ffdfaa88;opacity:.65;animation:drift var(--t) ease-in-out infinite alternate;animation-delay:var(--delay)}
+@keyframes drift{from{transform:translate3d(0,10px,0) scale(.6);opacity:.12}to{transform:translate3d(9px,-18px,0) scale(1.25);opacity:.85}}
+.photo{border:1px solid #f6d8e147;box-shadow:0 8px 32px #1a0d2866,0 0 15px #eab7d11a}
+header h1{text-shadow:0 0 45px #ffc8e98a}
+.ending button{box-shadow:0 0 25px #ffd5e266;transition:transform .2s,box-shadow .2s}.ending button:hover{transform:translateY(-3px);box-shadow:0 0 35px #ffd5e299}
+@media(prefers-reduced-motion:reduce){.sparkle,.bulb,body::before{animation:none!important}}
+
+/* Cinematic, full-screen photo slideshow. Originals are displayed without filters or cropping. */
+.slideshow-open{display:inline-flex;align-items:center;gap:9px;margin-top:24px;border:1px solid #ffdbeb99;border-radius:40px;background:#f7cce6;color:#38203c;padding:15px 26px;font:600 14px Arial,sans-serif;cursor:pointer;box-shadow:0 0 30px #ffb7dc55}
+.slideshow{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at center,#4b3455,#130e1c 78%);display:none;flex-direction:column;align-items:center;justify-content:center;padding:64px 18px 80px}
+.slideshow.active{display:flex}.slideshow img{display:block;max-width:100%;max-height:calc(100vh - 180px);width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 12px 65px #0009;animation:photoReveal .65s ease both}
+@keyframes photoReveal{from{opacity:.1;transform:scale(.975)}to{opacity:1;transform:scale(1)}}
+.slide-top{position:absolute;top:22px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;color:#ffe7f4;font:13px Arial,sans-serif;letter-spacing:1px}
+.slide-controls{position:absolute;bottom:24px;display:flex;align-items:center;gap:18px}.slide-controls button,.close-slide{background:#ffffff20;border:1px solid #ffffff70;border-radius:30px;color:#fff;padding:11px 17px;cursor:pointer;font:14px Arial,sans-serif}.close-slide{padding:8px 14px}.slide-controls button:hover,.close-slide:hover{background:#ffffff44}
+.slide-counter{color:#eed4e5;font:13px Arial,sans-serif;min-width:58px;text-align:center}
+@media(prefers-reduced-motion:reduce){.slideshow img{animation:none}}
+</style></head><body><div class="fairy-lights" aria-hidden="true"><div class="fairy-wire"></div></div><div class="sparkle-field" aria-hidden="true"></div><header><small>A LITTLE WORLD MADE JUST FOR YOU</small><h1>Anoushka ♡</h1><p class="intro">Some moments deserve to last a little longer.</p><button class="slideshow-open" id="startSlideshow">✧ Watch her memories</button></header><main><div class="gallery" id="gallery"></div><section class="ending" style="padding:65px 24px 100px"><small style="letter-spacing:3px;color:#dfadcb">TO BE CONTINUED ♡</small><h2 style="font-weight:normal;font-size:clamp(27px,5vw,45px)">More beautiful memories are coming…</h2><p>The final birthday message will be added later.</p></section></main><footer>Made with care, just for you ♡</footer>
+<div class="slideshow" id="slideshow" role="dialog" aria-modal="true" aria-label="Photo slideshow" aria-hidden="true">
+ <div class="slide-top"><span>ANOUSHKA · LITTLE MOMENTS ♡</span><button class="close-slide" id="closeSlide" aria-label="Close slideshow">✕</button></div>
+ <img id="slideImage" alt="A photograph of Anoushka">
+ <div class="slide-controls"><button id="previousSlide" aria-label="Previous photo">❮</button><button id="toggleSlide" aria-label="Pause slideshow">Pause Ⅱ</button><span class="slide-counter" id="slideCounter">1 / 50</span><button id="nextSlide" aria-label="Next photo">❯</button></div>
+</div><script>
+// Add 10 original photos to each row folder: photos/row1 through photos/row6.
+// Rows 1–5 have their own original photos; row 6 temporarily reuses Row 1.
+const rowMessages=['','Every picture holds a moment worth remembering.','','Some people make ordinary days extraordinary.','','And some memories stay with us forever.'];
+const fairy=document.querySelector('.fairy-lights');
+for(let i=0;i<17;i++){const bulb=document.createElement('i');bulb.className='bulb';bulb.style.setProperty('--left',`${(i+.5)*100/17}%`);bulb.style.setProperty('--top',`${27+38*Math.sin((i+.5)/17*Math.PI)}px`);bulb.style.setProperty('--size',`${4+i%3}px`);bulb.style.setProperty('--speed',`${1.5+i%4*.6}s`);fairy.append(bulb)}
+const sparkleField=document.querySelector('.sparkle-field');
+for(let i=0;i<75;i++){const star=document.createElement('i');star.className='sparkle';star.style.setProperty('--x',`${(i*61.8)%100}%`);star.style.setProperty('--y',`${(i*37.9)%100}%`);star.style.setProperty('--s',`${1.5+i%3}px`);star.style.setProperty('--t',`${2.5+i%6}s`);star.style.setProperty('--delay',`${-i*.27}s`);sparkleField.append(star)}
+const gallery=document.getElementById('gallery');
+for(let row=1;row<=6;row++){
+ const section=document.createElement('section');section.className='strip'+(row%2===0?' reverse':'');
+ section.style.setProperty('--duration',`${55+row*7}s`);
+ const track=document.createElement('div');track.className='track';
+ const folder=row<=5?`row${row}`:'row1'; // Row 6 temporarily uses Row 1 until more photos arrive.
+ const images=Array.from({length:10},(_,i)=>`photos/${folder}/photo${String(i+1).padStart(2,'0')}.jpg`);
+ // Duplicate the image sequence only for a seamless scrolling loop.
+ for(let copy=0;copy<2;copy++)for(const src of images){const frame=document.createElement('div');frame.className='photo';const img=document.createElement('img');img.src=src;img.alt='A memory of Anoushka';img.loading=copy===0?'eager':'lazy';frame.append(img);track.append(frame)}
+ section.append(track);gallery.append(section);
+ if(rowMessages[row-1]){const text=document.createElement('div');text.className='between';text.textContent=rowMessages[row-1];gallery.append(text)}
+}
+const photoSources=Array.from({length:5},(_,r)=>Array.from({length:10},(_,i)=>`photos/row${r+1}/photo${String(i+1).padStart(2,'0')}.jpg`)).flat();
+const slideshow=document.getElementById('slideshow');const slideImage=document.getElementById('slideImage');
+const counter=document.getElementById('slideCounter');const toggle=document.getElementById('toggleSlide');
+let current=0,playing=false,timer=null;
+function renderSlide(){slideImage.style.animation='none';void slideImage.offsetWidth;slideImage.style.animation='';slideImage.src=photoSources[current];counter.textContent=`${current+1} / ${photoSources.length}`}
+function advance(n=1){current=(current+n+photoSources.length)%photoSources.length;renderSlide()}
+function pause(){playing=false;clearInterval(timer);timer=null;toggle.textContent='Play ▶';toggle.setAttribute('aria-label','Play slideshow')}
+function play(){clearInterval(timer);playing=true;toggle.textContent='Pause Ⅱ';toggle.setAttribute('aria-label','Pause slideshow');timer=setInterval(()=>advance(),4200)}
+function openSlide(){slideshow.classList.add('active');slideshow.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';renderSlide();play();document.getElementById('closeSlide').focus()}
+function closeSlide(){pause();slideshow.classList.remove('active');slideshow.setAttribute('aria-hidden','true');document.body.style.overflow='';document.getElementById('startSlideshow').focus()}
+document.getElementById('startSlideshow').addEventListener('click',openSlide);
+document.getElementById('closeSlide').addEventListener('click',closeSlide);
+document.getElementById('previousSlide').addEventListener('click',()=>advance(-1));
+document.getElementById('nextSlide').addEventListener('click',()=>advance());
+toggle.addEventListener('click',()=>playing?pause():play());
+document.addEventListener('keydown',e=>{if(!slideshow.classList.contains('active'))return;if(e.key==='Escape')closeSlide();if(e.key==='ArrowLeft')advance(-1);if(e.key==='ArrowRight')advance()});
+</script></body></html>
