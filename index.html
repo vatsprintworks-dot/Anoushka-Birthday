@@ -42,10 +42,58 @@ header h1{text-shadow:0 0 45px #ffc8e98a}
 .secret-modal.active,.secret-page.active{display:flex}
 .secret-card{width:min(100%,520px);padding:45px 28px;text-align:center;border:1px solid #f6d3eb66;border-radius:26px;background:#ffffff13;box-shadow:0 25px 100px #0007;backdrop-filter:blur(15px)}
 .secret-card h2{font-size:clamp(30px,6vw,48px);font-weight:normal;margin:12px 0}.secret-card p{color:#f1d6e7}.secret-card input{display:block;width:100%;max-width:330px;margin:25px auto 12px;border:1px solid #f2d5e9aa;border-radius:12px;padding:15px;background:#fff9;color:#2e1b31;font:17px Arial,sans-serif;text-align:center}.secret-card button{cursor:pointer;border:0;border-radius:30px;padding:14px 23px;background:#f5c9e3;color:#39203b;font:600 14px Arial,sans-serif}.secret-card .back-secret{background:transparent;color:#f9e2f1;border:1px solid #ffffff66;margin-top:14px}.secret-error{min-height:24px;color:#ffe1e1!important;font:13px Arial,sans-serif}.secret-note{max-width:650px;line-height:1.9;font-size:clamp(18px,3vw,23px);font-style:italic;white-space:pre-wrap}.secret-page .secret-card{max-width:720px}
-</style></head><body><div id="birthdayGate" aria-label="Birthday countdown"><div class="gate-card"><div style="font-size:31px">🌸 ✨ 🌷 ✨ 🌸</div><p style="letter-spacing:3px;font:12px Arial">A LITTLE BIRTHDAY SURPRISE JUST FOR YOU</p><h2 id="gateTitle">Anoushka ♡</h2><p id="gateSubtitle">Something beautiful is waiting for you…</p><div class="gate-numbers" id="gateNumbers"><div><strong id="days">00</strong><small>DAYS</small></div><div><strong id="hours">00</strong><small>HOURS</small></div><div><strong id="minutes">00</strong><small>MINUTES</small></div><div><strong id="seconds">00</strong><small>SECONDS</small></div></div><button id="enterBirthday" hidden>✨ Open Your Birthday Surprise ✨</button><p style="font-size:12px;opacity:.8">Made with care, just for you ♡</p></div></div><canvas id="birthdayFireworks" aria-hidden="true"></canvas><div class="fairy-lights" aria-hidden="true"><div class="fairy-wire"></div></div><div class="sparkle-field" aria-hidden="true"></div><header><small>A LITTLE WORLD MADE JUST FOR YOU</small><h1>Happy Birthday,<br>Anoushka! ♡</h1><p class="intro">Some moments deserve to last a little longer.</p><button class="slideshow-open" id="startSlideshow">✧ Watch her memories</button></header><main><div class="gallery" id="gallery"></div><section class="ending" style="padding:65px 24px 100px"><small style="letter-spacing:3px;color:#dfadcb">TO BE CONTINUED ♡</small><h2 style="font-weight:normal;font-size:clamp(27px,5vw,45px)">More beautiful memories are coming…</h2><p>There is one more little surprise waiting for you…</p><button class="secret-button" id="openSecret">💌 Something Special, Just for You</button></section></main><footer>Made with care, just for you ♡</footer>
+
+/* Comfortable, elegant reading for the complete birthday letter */
+.secret-page { align-items:flex-start; padding:clamp(16px,4vw,45px) 14px; }
+.secret-page .secret-card { margin:auto; max-width:780px; padding:clamp(26px,5vw,55px); background:linear-gradient(155deg,#fffaf5,#fff0f6); color:#54344c; border:1px solid #ffe0e9; box-shadow:0 24px 90px #160b1a99; }
+.secret-page .secret-card h2 { color:#9a537d; }
+.secret-page .secret-note { max-width:100%; text-align:left; font-style:normal; font-size:clamp(16px,2.5vw,19px); line-height:1.9; color:#50364a; overflow-wrap:anywhere; }
+.secret-page .back-secret { color:#653854; border-color:#b98ca8; }
+</style></head><body><div id="birthdayGate" aria-label="Birthday countdown"><div class="gate-card"><div style="font-size:31px">🌸 ✨ 🌷 ✨ 🌸</div><p style="letter-spacing:3px;font:12px Arial">A LITTLE BIRTHDAY SURPRISE JUST FOR YOU</p><h2 id="gateTitle">Anoushka ♡</h2><p id="gateSubtitle">Something beautiful is waiting for you…</p><div class="gate-numbers" id="gateNumbers"><div><strong id="days">00</strong><small>DAYS</small></div><div><strong id="hours">00</strong><small>HOURS</small></div><div><strong id="minutes">00</strong><small>MINUTES</small></div><div><strong id="seconds">00</strong><small>SECONDS</small></div></div><button id="enterBirthday" hidden>✨ Open Your Birthday Surprise ✨</button><p style="font-size:12px;opacity:.8">Made with care, just for you ♡</p></div></div><canvas id="birthdayFireworks" aria-hidden="true"></canvas><div class="fairy-lights" aria-hidden="true"><div class="fairy-wire"></div></div><div class="sparkle-field" aria-hidden="true"></div><header><small>A LITTLE WORLD MADE JUST FOR YOU</small><h1>Happy Birthday,<br>Anoushka! ♡</h1><p class="intro">Your world. Your memories. Your journey. And all the magic still waiting for you.</p><button class="slideshow-open" id="startSlideshow">✧ Watch her memories</button></header><main><div class="gallery" id="gallery"></div><section class="ending" style="padding:65px 24px 100px"><small style="letter-spacing:3px;color:#dfadcb">TO BE CONTINUED ♡</small><h2 style="font-weight:normal;font-size:clamp(27px,5vw,45px)">More beautiful memories are coming…</h2><p>There is one more little surprise waiting for you…</p><button class="secret-button" id="openSecret">💌 Something Special, Just for You</button></section></main><footer>Made with care, just for you ♡</footer>
 
 <div class="secret-modal" id="secretModal" role="dialog" aria-modal="true" aria-labelledby="secretHeading" aria-hidden="true"><div class="secret-card"><div style="font-size:38px">🔐 ✨</div><h2 id="secretHeading">A Little Secret for You</h2><p>Some words are meant for just one person. ♡</p><form id="secretForm"><input id="secretPassword" type="password" autocomplete="off" placeholder="Enter your secret password" aria-label="Secret password" required><button type="submit">Unlock My Message ♡</button><p class="secret-error" id="secretError" aria-live="polite"></p></form><button class="back-secret" id="closeSecret" type="button">← Back to memories</button></div></div>
-<div class="secret-page" id="secretPage" role="dialog" aria-modal="true" aria-label="A special note for Anoushka" aria-hidden="true"><div class="secret-card"><div style="font-size:39px">💌 ✨ 🌸</div><h2>A Note, Just for Anoushka ♡</h2><p class="secret-note">[Your personal birthday message will appear here. ♡]</p><button class="back-secret" id="closeNote" type="button">← Back to the birthday memories</button></div></div>
+<div class="secret-page" id="secretPage" role="dialog" aria-modal="true" aria-label="A special note for Anoushka" aria-hidden="true"><div class="secret-card"><div style="font-size:39px">💌 ✨ 🌸</div><h2>A Note, Just for Anoushka ♡</h2><p class="secret-note">Hey Anoushkaaaaa ❤️
+
+Happiest Birthdayyyyyyyyyy Kiddooooo!! 🥹🎂💗
+
+Today is special, cz it&#x27;s the day I believe the world got a little brighter and of course better, cz you came in it. ✨❤️
+
+I just wanted to tell you how lucky I am to know you, and of course, I can proudly say I am your friend, yup!! 🫶🏻
+
+From the day before we even met or started talking, I had huge respect for you, but after I met you, it was something really great. The way we started things, a spark! ✨ It&#x27;s rare even for me to come so close to someone in such a short period of time.
+
+I don&#x27;t even know what to say, where to start. There are so many things, words are not enough to describe how special you are. 🥹❤️
+
+Looking back at the days we started talking, I would have never imagined that I would be lucky enough to share this bond with you.
+
+You are just a WOWwwwwww!! 💗 A yellow person! 💛🌻
+
+You just don&#x27;t stand out because you try, you do everything with your heart. It&#x27;s just you are you, YOU are ANoushkaaa!! 🫶🏻✨
+
+Also, I want to thank you for always listening to my stories, handling my tantrums. I want to thank you for all the talks and amazing memories that we made together. ❤️
+
+No matter how far life takes us, I know you will always have a special place in my heart. 🥹💗
+
+I consider you not just a friend but family. I know it might sound something cringe, but really, in the era of *&quot;dost dost na rha&quot;*, you made me believe in *&quot;tere jaisa yaar khn&quot;*. 🫂❤️
+And Anoushka, there&#x27;s one more thing I wanna say. I know I haven&#x27;t always been the best version of myself, I have made mistakes, said things I shouldn&#x27;t have, and maybe hurt you in ways I never intended to. And for all of that, I am genuinely sorry. 🥹❤️ I can&#x27;t go back and change things, but if there&#x27;s one thing I wish I could change, it would be those moments when I became a reason behind your sadness instead of your smile. You have always deserved kindness, happiness and respect, and I am sorry for the times I failed to give you that. ❤️🫂
+I want to see you winning in your life. I want you to achieve every single dream you desire. I want you to overcome every hardship you face. I want you to succeed in life, not just professionally but emotionally, personally. ❤️
+
+I wanna see you smile, and may you always keepp smiling!! 🥹💗 You deserve every happiness in the world.
+
+May God bless you with the best of His blessings. 🙏🏻✨
+
+May you find the person who can give you every happiness, love and support in life. ❤️
+
+I hope this year brings you endless happiness, good health, success and everything you have been dreaming of. 🌷✨
+
+I know you are gonna make your parents proud!! 🫶🏻❤️
+
+Thank you for everything, ANoushka!! 🥹🫂🫂🫂
+💗Hope to see you soon !!!!!! 
+
+Enjoy your SPecial day!! 🎂🎀
+
+Keep smiling Always!! 💛🌻❤️</p><button class="back-secret" id="closeNote" type="button">← Back to the birthday memories</button></div></div>
 <div class="slideshow" id="slideshow" role="dialog" aria-modal="true" aria-label="Photo slideshow" aria-hidden="true">
  <div class="slide-top"><span>ANOUSHKA · LITTLE MOMENTS ♡</span><button class="close-slide" id="closeSlide" aria-label="Close slideshow">✕</button></div>
  <img id="slideImage" alt="A photograph of Anoushka">
