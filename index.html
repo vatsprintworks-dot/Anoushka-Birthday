@@ -26,25 +26,43 @@ header h1{text-shadow:0 0 45px #ffc8e98a}
 .slide-controls{position:absolute;bottom:24px;display:flex;align-items:center;gap:18px}.slide-controls button,.close-slide{background:#ffffff20;border:1px solid #ffffff70;border-radius:30px;color:#fff;padding:11px 17px;cursor:pointer;font:14px Arial,sans-serif}.close-slide{padding:8px 14px}.slide-controls button:hover,.close-slide:hover{background:#ffffff44}
 .slide-counter{color:#eed4e5;font:13px Arial,sans-serif;min-width:58px;text-align:center}
 @media(prefers-reduced-motion:reduce){.slideshow img{animation:none}}
-</style></head><body><div class="fairy-lights" aria-hidden="true"><div class="fairy-wire"></div></div><div class="sparkle-field" aria-hidden="true"></div><header><small>A LITTLE WORLD MADE JUST FOR YOU</small><h1>Anoushka ♡</h1><p class="intro">Some moments deserve to last a little longer.</p><button class="slideshow-open" id="startSlideshow">✧ Watch her memories</button></header><main><div class="gallery" id="gallery"></div><section class="ending" style="padding:65px 24px 100px"><small style="letter-spacing:3px;color:#dfadcb">TO BE CONTINUED ♡</small><h2 style="font-weight:normal;font-size:clamp(27px,5vw,45px)">More beautiful memories are coming…</h2><p>The final birthday message will be added later.</p></section></main><footer>Made with care, just for you ♡</footer>
+</style><style>
+#birthdayGate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 50% 15%,#855c88 0%,#4b315c 48%,#1b112b 100%);text-align:center;overflow:auto}
+#birthdayGate.gone{display:none}#birthdayGate .gate-card{position:relative;z-index:2;max-width:760px;width:100%;padding:38px 18px;border:1px solid #f7d7e777;border-radius:28px;background:#ffffff0c;box-shadow:0 12px 80px #140c2755;backdrop-filter:blur(7px)}
+#birthdayGate h2{font-size:clamp(40px,8vw,78px);font-weight:normal;color:#fff2fa;margin:12px 0}#birthdayGate p{color:#f4d5e9;font-size:clamp(15px,2.5vw,21px)}
+.gate-numbers{display:flex;justify-content:center;gap:10px;margin:28px auto;flex-wrap:wrap}.gate-numbers div{padding:14px 8px;min-width:72px;background:#ffffff19;border:1px solid #ffe6ef55;border-radius:16px}.gate-numbers strong{display:block;font:clamp(25px,5vw,43px) Arial;color:#ffe6ae}.gate-numbers small{font:10px Arial;letter-spacing:2px;color:#fce1f0}
+#enterBirthday{cursor:pointer;border:1px solid #ffe1ef;background:linear-gradient(135deg,#ffe5ef,#eeb2d4);color:#42243d;border-radius:40px;padding:16px 28px;font:600 15px Arial;box-shadow:0 0 30px #ffbfe577}
+#birthdayGate .petal{position:absolute;top:-10vh;font-size:25px;pointer-events:none;animation:petalFloat var(--speed) linear infinite;animation-delay:var(--delay);left:var(--left);opacity:.65}@keyframes petalFloat{to{transform:translateY(125vh) rotate(390deg)}}
+#birthdayFireworks{position:fixed;inset:0;z-index:220;pointer-events:none}body.gate-locked{overflow:hidden}#birthdayFireworks{z-index:3}#birthdayGate{z-index:10}header,main,footer{isolation:isolate}header h1{font-size:clamp(44px,8vw,100px);line-height:1.15}#birthdayGate .gate-card{box-shadow:0 12px 80px #140c2755,0 0 55px #ffd7f02a}
+
+/* Final secret-note experience */
+.secret-button{margin-top:22px;border:1px solid #ffe5f5;background:linear-gradient(120deg,#ffd7ed,#e6b4df);color:#40223f;border-radius:40px;padding:17px 29px;font:600 16px Arial,sans-serif;box-shadow:0 0 36px #ffb6dd55;cursor:pointer}
+.secret-button:hover{transform:translateY(-2px)}
+.secret-modal,.secret-page{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 50% 20%,#785579,#201428 75%);overflow-y:auto}
+.secret-modal.active,.secret-page.active{display:flex}
+.secret-card{width:min(100%,520px);padding:45px 28px;text-align:center;border:1px solid #f6d3eb66;border-radius:26px;background:#ffffff13;box-shadow:0 25px 100px #0007;backdrop-filter:blur(15px)}
+.secret-card h2{font-size:clamp(30px,6vw,48px);font-weight:normal;margin:12px 0}.secret-card p{color:#f1d6e7}.secret-card input{display:block;width:100%;max-width:330px;margin:25px auto 12px;border:1px solid #f2d5e9aa;border-radius:12px;padding:15px;background:#fff9;color:#2e1b31;font:17px Arial,sans-serif;text-align:center}.secret-card button{cursor:pointer;border:0;border-radius:30px;padding:14px 23px;background:#f5c9e3;color:#39203b;font:600 14px Arial,sans-serif}.secret-card .back-secret{background:transparent;color:#f9e2f1;border:1px solid #ffffff66;margin-top:14px}.secret-error{min-height:24px;color:#ffe1e1!important;font:13px Arial,sans-serif}.secret-note{max-width:650px;line-height:1.9;font-size:clamp(18px,3vw,23px);font-style:italic;white-space:pre-wrap}.secret-page .secret-card{max-width:720px}
+</style></head><body><div id="birthdayGate" aria-label="Birthday countdown"><div class="gate-card"><div style="font-size:31px">🌸 ✨ 🌷 ✨ 🌸</div><p style="letter-spacing:3px;font:12px Arial">A LITTLE BIRTHDAY SURPRISE JUST FOR YOU</p><h2 id="gateTitle">Anoushka ♡</h2><p id="gateSubtitle">Something beautiful is waiting for you…</p><div class="gate-numbers" id="gateNumbers"><div><strong id="days">00</strong><small>DAYS</small></div><div><strong id="hours">00</strong><small>HOURS</small></div><div><strong id="minutes">00</strong><small>MINUTES</small></div><div><strong id="seconds">00</strong><small>SECONDS</small></div></div><button id="enterBirthday" hidden>✨ Open Your Birthday Surprise ✨</button><p style="font-size:12px;opacity:.8">Made with care, just for you ♡</p></div></div><canvas id="birthdayFireworks" aria-hidden="true"></canvas><div class="fairy-lights" aria-hidden="true"><div class="fairy-wire"></div></div><div class="sparkle-field" aria-hidden="true"></div><header><small>A LITTLE WORLD MADE JUST FOR YOU</small><h1>Happy Birthday,<br>Anoushka! ♡</h1><p class="intro">Some moments deserve to last a little longer.</p><button class="slideshow-open" id="startSlideshow">✧ Watch her memories</button></header><main><div class="gallery" id="gallery"></div><section class="ending" style="padding:65px 24px 100px"><small style="letter-spacing:3px;color:#dfadcb">TO BE CONTINUED ♡</small><h2 style="font-weight:normal;font-size:clamp(27px,5vw,45px)">More beautiful memories are coming…</h2><p>There is one more little surprise waiting for you…</p><button class="secret-button" id="openSecret">💌 Something Special, Just for You</button></section></main><footer>Made with care, just for you ♡</footer>
+
+<div class="secret-modal" id="secretModal" role="dialog" aria-modal="true" aria-labelledby="secretHeading" aria-hidden="true"><div class="secret-card"><div style="font-size:38px">🔐 ✨</div><h2 id="secretHeading">A Little Secret for You</h2><p>Some words are meant for just one person. ♡</p><form id="secretForm"><input id="secretPassword" type="password" autocomplete="off" placeholder="Enter your secret password" aria-label="Secret password" required><button type="submit">Unlock My Message ♡</button><p class="secret-error" id="secretError" aria-live="polite"></p></form><button class="back-secret" id="closeSecret" type="button">← Back to memories</button></div></div>
+<div class="secret-page" id="secretPage" role="dialog" aria-modal="true" aria-label="A special note for Anoushka" aria-hidden="true"><div class="secret-card"><div style="font-size:39px">💌 ✨ 🌸</div><h2>A Note, Just for Anoushka ♡</h2><p class="secret-note">[Your personal birthday message will appear here. ♡]</p><button class="back-secret" id="closeNote" type="button">← Back to the birthday memories</button></div></div>
 <div class="slideshow" id="slideshow" role="dialog" aria-modal="true" aria-label="Photo slideshow" aria-hidden="true">
  <div class="slide-top"><span>ANOUSHKA · LITTLE MOMENTS ♡</span><button class="close-slide" id="closeSlide" aria-label="Close slideshow">✕</button></div>
  <img id="slideImage" alt="A photograph of Anoushka">
  <div class="slide-controls"><button id="previousSlide" aria-label="Previous photo">❮</button><button id="toggleSlide" aria-label="Pause slideshow">Pause Ⅱ</button><span class="slide-counter" id="slideCounter">1 / 50</span><button id="nextSlide" aria-label="Next photo">❯</button></div>
 </div><script>
-// Add 10 original photos to each row folder: photos/row1 through photos/row6.
-// Rows 1–5 have their own original photos; row 6 temporarily reuses Row 1.
+// Five rows of ten original photos each.
 const rowMessages=['','Every picture holds a moment worth remembering.','','Some people make ordinary days extraordinary.','','And some memories stay with us forever.'];
 const fairy=document.querySelector('.fairy-lights');
 for(let i=0;i<17;i++){const bulb=document.createElement('i');bulb.className='bulb';bulb.style.setProperty('--left',`${(i+.5)*100/17}%`);bulb.style.setProperty('--top',`${27+38*Math.sin((i+.5)/17*Math.PI)}px`);bulb.style.setProperty('--size',`${4+i%3}px`);bulb.style.setProperty('--speed',`${1.5+i%4*.6}s`);fairy.append(bulb)}
 const sparkleField=document.querySelector('.sparkle-field');
 for(let i=0;i<75;i++){const star=document.createElement('i');star.className='sparkle';star.style.setProperty('--x',`${(i*61.8)%100}%`);star.style.setProperty('--y',`${(i*37.9)%100}%`);star.style.setProperty('--s',`${1.5+i%3}px`);star.style.setProperty('--t',`${2.5+i%6}s`);star.style.setProperty('--delay',`${-i*.27}s`);sparkleField.append(star)}
 const gallery=document.getElementById('gallery');
-for(let row=1;row<=6;row++){
+for(let row=1;row<=5;row++){
  const section=document.createElement('section');section.className='strip'+(row%2===0?' reverse':'');
  section.style.setProperty('--duration',`${55+row*7}s`);
  const track=document.createElement('div');track.className='track';
- const folder=row<=5?`row${row}`:'row1'; // Row 6 temporarily uses Row 1 until more photos arrive.
+ const folder=`row${row}`;
  const images=Array.from({length:10},(_,i)=>`photos/${folder}/photo${String(i+1).padStart(2,'0')}.jpg`);
  // Duplicate the image sequence only for a seamless scrolling loop.
  for(let copy=0;copy<2;copy++)for(const src of images){const frame=document.createElement('div');frame.className='photo';const img=document.createElement('img');img.src=src;img.alt='A memory of Anoushka';img.loading=copy===0?'eager':'lazy';frame.append(img);track.append(frame)}
@@ -67,4 +85,54 @@ document.getElementById('previousSlide').addEventListener('click',()=>advance(-1
 document.getElementById('nextSlide').addEventListener('click',()=>advance());
 toggle.addEventListener('click',()=>playing?pause():play());
 document.addEventListener('keydown',e=>{if(!slideshow.classList.contains('active'))return;if(e.key==='Escape')closeSlide();if(e.key==='ArrowLeft')advance(-1);if(e.key==='ArrowRight')advance()});
+</script><script>
+// Countdown uses the recipient's midnight in India (UTC+05:30).
+const birthdayTime=Date.parse('2026-11-14T00:00:00+05:30');
+const gate=document.getElementById('birthdayGate');document.body.classList.add('gate-locked');
+for(let i=0;i<20;i++){const p=document.createElement('span');p.className='petal';p.textContent=['🌸','✿','❀','🌷'][i%4];p.style.setProperty('--left',`${(i*41.7)%100}%`);p.style.setProperty('--speed',`${12+i%9}s`);p.style.setProperty('--delay',`${-i*1.3}s`);gate.append(p)}
+const enter=document.getElementById('enterBirthday');let ready=false;
+function tickBirthday(){const left=Math.max(0,birthdayTime-Date.now());const d=Math.floor(left/86400000),h=Math.floor(left/3600000)%24,m=Math.floor(left/60000)%60,sec=Math.floor(left/1000)%60;for(const [id,v] of [['days',d],['hours',h],['minutes',m],['seconds',sec]])document.getElementById(id).textContent=String(v).padStart(2,'0');if(left===0&&!ready){ready=true;document.getElementById('gateNumbers').hidden=true;document.getElementById('gateTitle').textContent='Happy Birthday, Anoushka! ♡';document.getElementById('gateSubtitle').textContent='Today is all about celebrating you. ✨';enter.hidden=false}}
+tickBirthday();setInterval(tickBirthday,1000);
+enter.addEventListener('click',()=>{gate.classList.add('gone');document.body.classList.remove('gate-locked');window.scrollTo({top:0,behavior:'instant'});startContinuousFireworks()});
+// Gentle, continuous fireworks begin only after the surprise button is clicked.
+function startContinuousFireworks(){
+ const c=document.getElementById('birthdayFireworks'),ctx=c.getContext('2d');
+ if(!ctx)return;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let particles=[],lastBurst=0,lastFrame=0,bursts=0;
+ const palette=['#ffe0a8','#ffbfdf','#fdf6ff','#e6b8ff','#fff0bf'];
+ function resize(){const ratio=Math.min(window.devicePixelRatio||1,2);c.width=Math.round(innerWidth*ratio);c.height=Math.round(innerHeight*ratio);ctx.setTransform(ratio,0,0,ratio,0,0)}
+ resize();window.addEventListener('resize',resize);
+ function burst(){
+   const x=innerWidth*(.12+Math.random()*.76),y=innerHeight*(.1+Math.random()*.48);
+   const color=palette[bursts++%palette.length];
+   for(let i=0;i<46;i++){
+     const a=Math.random()*Math.PI*2,v=1+Math.random()*2.7;
+     particles.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:85,max:85,color});
+   }
+ }
+ function frame(t){
+   if(document.hidden){requestAnimationFrame(frame);return}
+   if(t-lastFrame<30){requestAnimationFrame(frame);return}lastFrame=t;
+   ctx.clearRect(0,0,innerWidth,innerHeight);
+   if(!reduced&&t-lastBurst>1050){burst();lastBurst=t}
+   for(const p of particles){p.x+=p.vx;p.y+=p.vy;p.vy+=.017;p.vx*=.992;p.life--;
+     ctx.globalAlpha=Math.max(0,Math.min(.78,p.life/55));ctx.fillStyle=p.color;
+     ctx.beginPath();ctx.arc(p.x,p.y,1.65,0,Math.PI*2);ctx.fill()}
+   ctx.globalAlpha=1;particles=particles.filter(p=>p.life>0);
+   if(!reduced)requestAnimationFrame(frame);
+ }
+ if(reduced){burst();for(const p of particles){ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,2,2)}return}
+ burst();requestAnimationFrame(frame);
+}
+
+// A decorative password gate on a public static site, not secure encryption.
+const secretModal=document.getElementById('secretModal'),secretPage=document.getElementById('secretPage');
+const secretInput=document.getElementById('secretPassword');
+function showSecret(el){el.classList.add('active');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function hideSecret(el){el.classList.remove('active');el.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.getElementById('openSecret').addEventListener('click',()=>{document.getElementById('secretError').textContent='';secretInput.value='';showSecret(secretModal);secretInput.focus()});
+document.getElementById('closeSecret').addEventListener('click',()=>hideSecret(secretModal));
+document.getElementById('secretForm').addEventListener('submit',e=>{e.preventDefault();if(secretInput.value==='Smileplease'){hideSecret(secretModal);showSecret(secretPage);document.getElementById('closeNote').focus()}else{document.getElementById('secretError').textContent='Not quite! Try again, with a little smile ♡';secretInput.select()}});
+document.getElementById('closeNote').addEventListener('click',()=>hideSecret(secretPage));
 </script></body></html>
